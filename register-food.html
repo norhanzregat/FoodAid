@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Register</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .navbar {
+            background-color: rgb(255, 111, 0) !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+        }
+
+        .form-container {
+            width: 50%;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            color: rgb(255, 111, 0);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-submit {
+            background-color: rgb(255, 111, 0);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: rgb(255, 111, 0);
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">FoodAid</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register-food.html">Food Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="food-list.html">Food List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>Add Food</h2>
+        <form id="foodForm">
+            <div class="input-group">
+                <label>Name of the person who provided the food</label>
+                <input type="text" id="providerName" required>
+            </div>
+            <div class="input-group">
+                <label>Food name</label>
+                <input type="text" id="foodName" required>
+            </div>
+            <div class="input-group">
+                <label>Expiration date</label>
+                <input type="date" id="expirationDate" required>
+            </div>
+            <div class="input-group">
+                <label>Quantity</label>
+                <input type="text" id="quantity" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phoneNumber" required>
+            </div>
+            <div class="input-group">
+                <label>Location</label>
+                <input type="text" id="location" required>
+            </div>
+            <div class="input-group">
+                <label>Attach a photo</label>
+                <input type="file" id="foodImage" required>
+            </div>
+
+            <div class="forgot-password">
+                If you have filled in all the options, please click the Add button below.
+            </div>
+
+            <button type="submit" class="btn-submit">Addition</button>
+        </form>
+    </div>
+
+    <script>
+       document.getElementById('foodForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById('foodImage');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            const foodItem = {
+                providerName: document.getElementById('providerName').value,
+                foodName: document.getElementById('foodName').value,
+                expirationDate: document.getElementById('expirationDate').value,
+                quantity: document.getElementById('quantity').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                location: document.getElementById('location').value,
+                foodImage: reader.result  // 🔹 الصورة كـ Base64
+            };
+
+            let foodItems = JSON.parse(localStorage.getItem('foodItems')) || [];
+            foodItems.push(foodItem);
+            localStorage.setItem('foodItems', JSON.stringify(foodItems));
+
+            alert('Food item added successfully!');
+            window.location.href = 'food-list.html';
+        };
+    } else {
+        alert('Please attach a food image.');
+    }
+});
+
+    </script>
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+
+</html>

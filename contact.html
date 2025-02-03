@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <script src="contact.js" crossorigin="anonymous"></script>
+    <style>
+        .navbar {
+            background-color: rgb(255, 111, 0) !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">FoodAid</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register-food.html">Food Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Food List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <span class="big-circle"></span>
+        <img src="img/shape.png" class="square" alt="" />
+        <div class="form">
+            <div class="contact-info">
+                <h3 class="title">Contact Us</h3>
+                <p class="text">
+                    We welcome your inquiries. If you have any questions regarding FoodAid's initiatives in Jordan, feel
+                    free to send us a message!
+                </p>
+
+                <div class="info">
+                    <div class="information">
+                        <i class="fas fa-map-marker-alt"></i> &nbsp &nbsp
+                        <p>Amman, Jordan</p>
+                    </div>
+                    <div class="information">
+                        <i class="fas fa-envelope"></i> &nbsp &nbsp
+                        <p>info@foodaid.jo</p>
+                    </div>
+                    <div class="information">
+                        <i class="fas fa-phone"></i>&nbsp&nbsp
+                        <p>+962-6-1234567</p>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <p>Follow us on:</p>
+                    <div class="social-icons">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <span class="circle one"></span>
+                <span class="circle two"></span>
+
+                <form action="index.html" autocomplete="off">
+                    <h3 class="title">Contact us</h3>
+                    <div class="input-container">
+                        <input type="text" name="name" class="input" />
+                        <label for="">Username</label>
+                        <span>Username</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input" />
+                        <label for="">Email</label>
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input" />
+                        <label for="">Phone</label>
+                        <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" class="input"></textarea>
+                        <label for="">Message</label>
+                        <span>Message</span>
+                    </div>
+                    <input type="submit" value="Send" class="btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+
+</html>

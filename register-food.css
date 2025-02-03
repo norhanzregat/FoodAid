@@ -1,0 +1,43 @@
+.main-header {
+    background-color: #064861;
+    padding: 25px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #ffdd57; /* إضافة خط أسفل الهيدر */
+}
+
+.logo {
+    color: #064861;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase; /* لتكبير الحروف */
+}
+
+/* Navigation Styles */
+.main-nav {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #054166b5; /* لون خلفية داكن */
+    border-radius: 15px; /* زوايا دائرية أكبر */
+    padding: 12px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-nav a {
+    color: #ffffff;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 1.4rem; /* زيادة الحجم قليلاً */
+    transition: color 0.3s, transform 0.3s, background-color 0.3s ease-in-out;
+    font-weight: 500;
+    padding: 20px 18px; /* زيادة padding لجعل الرابط أكثر وضوحاً */
+    border-radius: 25px; /* زوايا مستديرة */
+}
+
+.main-nav a:hover {
+    color: #ffdd57; /* تغيير اللون عند التمرير */
+    transform: scale(1.1); /* تكبير أقل */
+    background-color: #04bfa6; /* خلفية لطيفة عند التمرير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* إضافة ظل أقوى */
+}

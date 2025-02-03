@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food List</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .navbar {
+            background-color: rgb(255, 111, 0) !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+        }
+
+        .food-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .food-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .food-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .food-card h3 {
+            margin: 10px 0;
+        }
+
+        .food-card p {
+            margin: 5px 0;
+        }
+
+        .expired {
+            text-decoration: line-through;
+            color: red;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">FoodAid</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register-food.html">Food Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="food-list.html">Food List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="food-list" id="foodList">
+        <!-- Food cards will be dynamically inserted here -->
+    </div>
+
+    <script>
+        function displayFoodItems() {
+            const foodItems = JSON.parse(localStorage.getItem('foodItems')) || [];
+            const foodList = document.getElementById('foodList');
+
+            foodList.innerHTML = '';
+
+            foodItems.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'food-card';
+
+                const expirationDate = new Date(item.expirationDate);
+                const today = new Date();
+                const isExpired = expirationDate < today;
+
+                card.innerHTML = `
+                    <button class="delete-btn" onclick="deleteFoodItem(${index})">×</button>
+                    <img src="${item.foodImage}" alt="${item.foodName} width:400px height:400px">
+                    <h3>${item.foodName}</h3>
+                    <p><b>Provided by:</b> ${item.providerName}</p>
+                    <p><b>Quantity:</b> ${item.quantity}</p>
+                    <p><b>Phone:</b> ${item.phoneNumber}</p>
+                    <p><b>Location:</b> ${item.location}</p>
+                    <p class="${isExpired ? 'expired' : ''}"><b>Expiration Date:</b> ${item.expirationDate}</p>
+                `;
+
+                foodList.appendChild(card);
+            });
+        }
+
+        function deleteFoodItem(index) {
+            let foodItems = JSON.parse(localStorage.getItem('foodItems')) || [];
+            foodItems.splice(index, 1); // إزالة العنصر من المصفوفة
+            localStorage.setItem('foodItems', JSON.stringify(foodItems)); // تحديث localStorage
+            displayFoodItems(); // إعادة عرض القائمة المحدثة
+        }
+
+        displayFoodItems();
+    </script>
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+
+</html>

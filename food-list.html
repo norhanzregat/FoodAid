@@ -7,15 +7,7 @@
     <title>Food List</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <style>
-        .navbar {
-            background-color: rgb(255, 111, 0) !important;
-            color: white;
-            font-weight: bold;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: white !important;
-        }
+ 
 
         .food-list {
             display: flex;
@@ -32,6 +24,7 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+        
 
         .food-card img {
             width: 100%;
@@ -71,27 +64,69 @@
         .delete-btn:hover {
             background-color: darkred;
         }
+   .custom-navbar {
+    background-color: rgb(255, 111, 0) !important;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    margin-right: 15px; /* أضف هذه السطر */
+
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(255, 111, 0);
+    background-color: white;
+}
+
+/* تمييز العنصر النشط */
+
+
+/* زر التبرع */
+.donate-btn {
+    border: 2px solid white;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.donate-btn:hover {
+    background-color: white;
+    color: rgb(255, 111, 0);
+
+}
+
+        
+ 
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">FoodAid</a>
+    <nav class="navbar navbar-expand-lg  custom-navbar">
+        <a class="navbar-brand text-white" href="#">FoodAid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <ul  class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active-link" href="Home.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="register-food.html">Food Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="food-list.html">Food List</a>
+                    <a class="nav-link" href="">Food List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -101,6 +136,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link donate-btn" href="#">Donate Food Now</a>
                 </li>
             </ul>
         </div>
